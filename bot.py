@@ -9,5 +9,6 @@ dp = Dispatcher(bot)
 
 
 if __name__ == "__main__":
+    print("Starting...")
     from handler import *
     executor.start_polling(dp, skip_updates=True)
