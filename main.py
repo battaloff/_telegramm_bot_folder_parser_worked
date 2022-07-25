@@ -1,5 +1,5 @@
 import os
-import datetime
+from datetime import datetime
 from data_base_tools.database_tools import DataBaseTools
 
 
@@ -13,7 +13,7 @@ while True:
                     plate_size = plate_name.split("_")[0]
                     quantity = plate_name.split("_")[1]
                     company = plate_name.split("_")[2]
-                    file_name = plate_name.split("_")[3]
-                    date_time = datetime.datetime.now().strftime("%d-%m-%Y   %H:%M:%S")
+                    file_name = "_".join(plate_name.split("_")[3:])
+                    date_time = datetime.now().strftime("%d-%m-%Y   %H:%M:%S")
                     DataBaseTools().insert_plate_info_in_table(company, plate_size, quantity, file_name, date_time)
                     print(f"{plate_size} {quantity} {company} {file_name} {date_time}")
