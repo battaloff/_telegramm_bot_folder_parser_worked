@@ -11,7 +11,7 @@ class DataBaseTools(BaseTools):
         try:
             self.cursor.execute("""INSERT INTO plates (
             company, plate_size, quantity, file_name, date_time)
-            VALUES (?,?,?,?,?) RETURNING *
+            VALUES (?,?,?,?,?) 
             """, (company, plate_size, quantity, file_name, date_time))
         except:
             pass
@@ -19,6 +19,7 @@ class DataBaseTools(BaseTools):
             self.connection.commit()
         finally:
             self.connection.close()
+            print(self.cursor.lastrowid)
 
     def get_last_row_from_database(self):
         self.cursor.execute("""SELECT * 
