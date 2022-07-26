@@ -29,3 +29,5 @@ class DataBaseTools(BaseTools):
         plate_info: tuple = self.cursor.fetchone()
         self.connection.close()
         return plate_info
+
+
