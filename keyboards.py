@@ -15,9 +15,9 @@ def get_keyboard():
 
 def ready_keyboard():
     buttons = [
-        InlineKeyboardButton(text="✅ГОТОВ✅",callback_data="sdgsdg"),
+        InlineKeyboardButton(text="✅ГОТОВ✅", callback_data="sdgsdg"),
         InlineKeyboardButton(text="Доставлен", callback_data="egdgs"),
-        InlineKeyboardButton(text="Отменён", callback_data="sdgsdg"),
+        InlineKeyboardButton(text="Отменён", callback_data="cancelled"),
     ]
 
     keyboard = InlineKeyboardMarkup(row_width=3)

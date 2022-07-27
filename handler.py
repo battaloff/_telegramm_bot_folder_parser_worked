@@ -23,14 +23,21 @@ async def get_last_iteration(message: Message):
 @dp.callback_query_handler(text="ready")
 async def send_random_value(call: CallbackQuery):
     info = DataBaseTools().get_last_row_from_database()
+    date_time = datetime.now().strftime("%d-%m-%Y   %H:%M:%S")
     await call.message.edit_text(text=f"🏢  <i>Фирма:</i>                     <b>{info[1]}</b>\n"
-                                             f"📝  <i>Название:</i>                <b>{info[4]}</b>\n"
-                                             f"🟦  <i>Размер:</i>                     <b>{info[2]}</b>\n"
-                                             f"☑  <i>Количество:</i>           <b>{info[3]}</b>\n"
-                                             f"🕐  <i>Дата и время:</i>       <b>{info[5]}</b>\n"
-                                             f"📦  <i>Статус:</i>                  <b> ✅✅✅ ГОТОВ ✅✅✅</b>\n"
-                                             f"🏷  <i>Номер:</i>                      <b>{info[0]}</b>",
-                               parse_mode="HTML", reply_markup=ready_keyboard())
+                                      f"📝  <i>Название:</i>                <b>{info[4]}</b>\n"
+                                      f"🟦  <i>Размер:</i>                     <b>{info[2]}</b>\n"
+                                      f"☑  <i>Количество:</i>           <b>{info[3]}</b>\n"
+                                      f"🕐  <i>Дата и время:</i>       <b>{info[5]}</b>\n"
+                                      f"📦  <i>Статус:</i>                  <b> ✅✅✅ ГОТОВ ✅✅✅</b>\n"
+                                      f"⏲  <i>Когда готов:</i>          <b>{date_time}</b>\n"
+                                      f"🏷  <i>Номер:</i>                      <b>{info[0]}</b>",
+                                 parse_mode="HTML", reply_markup=ready_keyboard())
     await call.answer(text="Ну молодец чо")
+
+
+@dp.callback_query_handler(text="cancelled")
+async def send_random_value(call: CallbackQuery):
+    await call.message.delete()
 
 
