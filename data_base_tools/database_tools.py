@@ -29,3 +29,7 @@ class DataBaseTools(BaseTools):
         plate_info: tuple = self.cursor.fetchone()
         self.connection.close()
         return plate_info
+
+    def get_last_id(self):
+        return self.cursor.lastrowid
+

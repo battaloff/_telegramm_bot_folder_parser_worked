@@ -1,7 +1,7 @@
 from aiogram.types import Message, CallbackQuery
 from bot import bot, dp
 from data_base_tools.database_tools import DataBaseTools
-from keyboards import get_keyboard, ready_keyboard, delivered_keyboard
+from keyboards import get_keyboard, ready_keyboard
 from datetime import datetime
 
 
@@ -15,7 +15,7 @@ async def get_last_iteration(message: Message):
                                              f"🟦  <i>Размер:</i>                     <b>{info[2]}</b>\n"
                                              f"☑  <i>Количество:</i>           <b>{info[3]}</b>\n"
                                              f"🕐  <i>Дата и время:</i>       <b>{info[5]}</b>\n"
-                                             f"📦  <i>Статус:</i>                  <b> 🟨 В ОЧЕРЕДИ 🟨 </b>\n"
+                                             f"📦  <i>Статус:</i>                  <b> В ОЧЕРЕДИ 🟨🟨🟨 </b>\n"
                                              f"🏷  <i>Номер:</i>                      <b>{info[0]}</b>",
                                parse_mode="HTML", reply_markup=get_keyboard())
 
@@ -29,7 +29,7 @@ async def send_random_value(call: CallbackQuery):
                                       f"🟦  <i>Размер:</i>                     <b>{info[2]}</b>\n"
                                       f"☑  <i>Количество:</i>           <b>{info[3]}</b>\n"
                                       f"🕐  <i>Дата и время:</i>       <b>{info[5]}</b>\n"
-                                      f"📦  <i>Статус:</i>                   <b> ✅ ГОТОВ ✅</b>\n"
+                                      f"📦  <i>Статус:</i>                  <b> ✅✅✅ ГОТОВ ✅✅✅</b>\n"
                                       f"⏲  <i>Когда готов:</i>          <b>{date_time}</b>\n"
                                       f"🏷  <i>Номер:</i>                      <b>{info[0]}</b>",
                                  parse_mode="HTML", reply_markup=ready_keyboard())
@@ -45,13 +45,12 @@ async def send_random_value(call: CallbackQuery):
                                       f"🟦  <i>Размер:</i>                     <b>{info[2]}</b>\n"
                                       f"☑  <i>Количество:</i>           <b>{info[3]}</b>\n"
                                       f"🕐  <i>Дата и время:</i>       <b>{info[5]}</b>\n"
-                                      f"📦  <i>Статус:</i>                  <b> ✅ ГОТОВ ✅</b>\n"
+                                      f"📦  <i>Статус:</i>                  <b> ✅✅✅ ГОТОВ ✅✅✅</b>\n"
                                       f"⏲  <i>Когда готов:</i>          <b>{date_time}</b>\n"
-                                      f"📦  <i>Доставка:</i>               <b>🚛ДОСТАВЛЕН🚛</b>\n"
-                                      f"📦  <i>Когда доставлен:</i>   <b>{date_time}</b>\n"
+                                      f"⏲  <i>Время доставки:</i>  <b>{date_time}</b>\n"
                                       f"🏷  <i>Номер:</i>                      <b>{info[0]}</b>",
-                                 parse_mode="HTML", reply_markup=delivered_keyboard())
-    await call.answer(text="Молодец")
+                                 parse_mode="HTML", reply_markup=ready_keyboard())
+    await call.answer(text="Ну молодец чо")
 
 
 @dp.callback_query_handler(text="cancelled")
